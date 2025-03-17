@@ -1,63 +1,86 @@
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 import java.util.Scanner;
+
+class Admin {
+    private String username = "Admin254";
+    private String password = "Password254";
+
+    public boolean login(String inputUsername, String inputPassword) {
+        return inputUsername.equals(username) && inputPassword.equals(password);
+    }
+}
+
+class Mahasiswa {
+    private String nama = "Maulvinazir";
+    private String nim = "202410370110254";
+
+    public boolean login(String inputNim) {
+        return inputNim.equals(nim);
+    }
+
+    public void displayInfo() {
+        System.out.println("Login berhasil! Nama: " + nama + ", NIM: " + nim);
+    }
+}
+
+class LoginSystem {
+    private Admin admin;
+    private Mahasiswa mahasiswa;
+
+    public LoginSystem() {
+        admin = new Admin();
+        mahasiswa = new Mahasiswa();
+    }
+
+    public void run() {
+        Scanner scanner = new Scanner(System.in);
+        while (true) {
+            System.out.println("Pilih jenis login:");
+            System.out.println("1. Login sebagai Admin");
+            System.out.println("2. Login sebagai Mahasiswa");
+            System.out.println("3. Keluar");
+            System.out.print("Masukkan pilihan (1/2/3): ");
+            String choice = scanner.nextLine();
+
+            if (choice.equals("1")) {
+                loginAsAdmin(scanner);
+            } else if (choice.equals("2")) {
+                loginAsMahasiswa(scanner);
+            } else if (choice.equals("3")) {
+                System.out.println("Terima kasih! Program selesai.");
+                break;
+            } else {
+                System.out.println("Pilihan tidak valid. Silakan coba lagi.");
+            }
+        }
+        scanner.close();
+    }
+
+    private void loginAsAdmin(Scanner scanner) {
+        System.out.print("Masukkan username: ");
+        String username = scanner.nextLine();
+        System.out.print("Masukkan password: ");
+        String password = scanner.nextLine();
+        if (admin.login(username, password)) {
+            System.out.println("Login Admin berhasil!");
+        } else {
+            System.out.println("Login gagal! Username atau password salah.");
+        }
+    }
+
+    private void loginAsMahasiswa(Scanner scanner) {
+        System.out.print("Masukkan NIM: ");
+        String nim = scanner.nextLine();
+        if (mahasiswa.login(nim)) {
+            mahasiswa.displayInfo();
+        } else {
+            System.out.println("Login gagal! NIM salah.");
+        }
+    }
+}
+
 public class Main {
     public static void main(String[] args) {
-        Scanner objInput = new Scanner(System.in);
-
-        //data admin
-        String username = "Admin254";
-        String password = "Password254";
-
-        //data mahasiswa
-        String nama = "Maulvinazir Achmad Indraraia";
-        String nim = "202410370110254";
-
-        System.out.println("Pilih Login: ");
-        System.out.println("1. Admin");
-        System.out.println("2. Mahasiswa");
-        System.out.print("Masukkan Pilihan: ");
-        int pilihan;
-        if (objInput.hasNextInt()) {
-            pilihan = objInput.nextInt();
-            objInput.nextLine();
-        }else {
-            System.out.println("Pilihan Tidak Valid");
-            objInput.close();
-            return;
-        }
-
-        if (pilihan == 1) {
-            while (true) {
-                System.out.print("Masukkan Username: ");
-                String inputUsername = objInput.nextLine();
-                System.out.print("Masukkan Password: ");
-                String inputPassword = objInput.nextLine();
-                if (inputUsername.equals(username) && inputPassword.equals(password)) {
-                    System.out.print("Login Berhasil");
-                    break;
-                }else{
-                    System.out.println("Login Gagal! Username And Password Salah");
-                }
-            }
-        }else if (pilihan == 2) {
-            while (true) {
-                System.out.print("Masukkan Nama: ");
-                String inputNama = objInput.nextLine();
-                System.out.print("Masukkan Nim: ");
-                String inputNim = objInput.nextLine();
-                if (inputNama.equals(nama) && inputNim.equals(nim)) {
-                    System.out.println("Login Mahasiswa Berhasil!");
-                    System.out.println("Nama: "+ inputNama);
-                    System.out.println("Nim: "+ inputNim);
-                    break;
-                }else{
-                    System.out.println("Login Gagal! Nama atau NIM Salah");
-                }
-            }
-        } else {
-            System.out.println("Inputan Tidak Valid, Mohon Masukkan Angka 1 Atau 2");
-        }
-        objInput.close();
+        LoginSystem loginSystem = new LoginSystem();
+        loginSystem.run();
     }
 }
