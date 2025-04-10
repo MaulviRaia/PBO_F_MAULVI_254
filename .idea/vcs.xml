@@ -2,5 +2,7 @@
 <project version="4">
   <component name="VcsDirectoryMappings">
     <mapping directory="" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/Codelab/Modul_3" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/Tugas/Tugas_PBO/Tugas_3/Tugas_3" vcs="Git" />
   </component>
 </project>

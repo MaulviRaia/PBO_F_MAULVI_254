@@ -3,7 +3,9 @@
   <component name="NewModuleRootManager" inherit-compiler-output="true">
     <exclude-output />
     <content url="file://$MODULE_DIR$">
+      <sourceFolder url="file://$MODULE_DIR$/Tugas_PBO/Tugas2/src" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Tugas_PBO/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Tugas_PBO/Tugas3/TUGAS_3/src" isTestSource="false" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
